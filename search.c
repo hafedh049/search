@@ -89,7 +89,7 @@ int jumpSearchRecursive(int arr[], int size, int key) {
 }
 
 // Jump Search (Iterative)
-int jumpSearch(int arr[], int size, int key) {
+int jumpSearchIterative(int arr[], int size, int key) {
     int step = sqrt(size);
     int prev = 0;
 
@@ -159,39 +159,6 @@ int ternarySearchIterative(int arr[], int size, int key) {
     }
 
     return -1;
-}
-
-int fibonacciSearch(int arr[], int key, int left, int right, int fibMMinus2, int fibMMinus1, int fibM, int size) {
-    if (left < right) {
-        int mid = left + fibMMinus2;
-
-        if (mid >= size)
-            mid = size - 1;
-
-        if (arr[mid] == key)
-            return mid;
-
-        if (arr[mid] < key)
-            return fibonacciSearch(arr, key, mid + 1, right, fibMMinus1, fibMMinus2 - fibMMinus1, fibM - fibMMinus1, size);
-
-        return fibonacciSearch(arr, key, left, mid, fibMMinus2, fibMMinus1 - fibMMinus2, fibM - fibMMinus1, size);
-    }
-
-    return -1;
-}
-
-int fibonacciSearchRecursive(int arr[], int size, int key) {
-    int fibMMinus2 = 0;
-    int fibMMinus1 = 1;
-    int fibM = fibMMinus1 + fibMMinus2;
-
-    while (fibM < size) {
-        fibMMinus2 = fibMMinus1;
-        fibMMinus1 = fibM;
-        fibM = fibMMinus1 + fibMMinus2;
-    }
-
-    return fibonacciSearch(arr, key, 0, size, fibMMinus2, fibMMinus1, fibM, size);
 }
 
 // Fibonacci Search (Iterative)
